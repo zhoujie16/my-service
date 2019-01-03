@@ -9,5 +9,20 @@ module.exports = appInfo => {
   // add your config here
   config.middleware = [];
 
+  config.view = {
+    mapping: {
+      '.html': 'arttemplate',
+    },
+  };
+  config.mongoose = {
+    url: 'mongodb://13.209.21.102:27017/zhoujie_service',
+    options: {
+      auth: {"authSource": "admin"},
+      user: "zhoujie",
+      pass: "qwer0926",
+      // poolSize: 10
+    },
+  };
+
   return config;
 };
