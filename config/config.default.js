@@ -24,5 +24,16 @@ module.exports = appInfo => {
     },
   };
 
+  config.cors = {
+    origin: '*',
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
+  };
+
+  config.security = {
+    csrf: {
+      enable: false,
+    }
+  };
+
   return config;
 };
