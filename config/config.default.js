@@ -14,13 +14,26 @@ module.exports = appInfo => {
       '.html': 'arttemplate',
     },
   };
-  config.mongoose = {
-    url: 'mongodb://13.209.21.102:27017/zhoujie_service',
-    options: {
-      auth: {"authSource": "admin"},
-      user: "zhoujie",
-      pass: "qwer0926",
-      // poolSize: 10
+  exports.mongoose = {
+    clients: {
+      zhoujie_service: {
+        url: 'mongodb://zhoujie16.cn:27017/zhoujie_service',
+        options: {
+          auth: {"authSource": "admin"},
+          user: "zhoujie",
+          pass: "qwer0926",
+          // poolSize: 10
+        },
+      },
+      note_service: {
+        url: 'mongodb://zhoujie16.cn:27017/note_service',
+        options: {
+          auth: {"authSource": "admin"},
+          user: "zhoujie",
+          pass: "qwer0926",
+          // poolSize: 10
+        },
+      },
     },
   };
 

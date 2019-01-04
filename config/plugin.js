@@ -17,3 +17,8 @@ exports.cors = {
   enable: true,
   package: 'egg-cors',
 };
+//实现 RESTful API
+exports.validate = {
+  enable: true,
+  package: 'egg-validate',
+};

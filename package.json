@@ -8,7 +8,9 @@
     "egg-cors": "^2.1.2",
     "egg-mongoose": "^3.1.1",
     "egg-scripts": "^2.5.0",
-    "egg-view-arttemplate": "^2.0.2"
+    "egg-validate": "^2.0.2",
+    "egg-view-arttemplate": "^2.0.2",
+    "moment": "^2.23.0"
   },
   "devDependencies": {
     "autod": "^3.0.1",

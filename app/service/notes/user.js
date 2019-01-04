@@ -4,7 +4,7 @@ const Service = require('egg').Service;
 class UserService extends Service {
   async list() {
     const ctx = this.ctx;
-    return ctx.model.User.find({})
+    return ctx.model.notes.User.find({})
   }
 
   // 添加用户
