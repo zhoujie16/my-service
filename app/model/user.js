@@ -3,13 +3,14 @@
 module.exports = app => {
   const mongoose = app.mongoose;
   const Schema = mongoose.Schema;
-  const conn = app.mongooseDB.get('note_service');
+  const conn = app.mongooseDB.get('zhoujie_service');
 
   const UserSchema = new Schema({
     userCode: {type: String},
     userName: {type: String},
     password: {type: String},
+    noteClassifys: {type: Array}
   });
 
-  return mongoose.model('User', UserSchema);
+  return conn.model('User', UserSchema);
 }

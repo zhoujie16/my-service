@@ -2,6 +2,7 @@
 
 // had enabled by egg
 // exports.static = true;
+
 //arttemplate 模板引擎
 exports.arttemplate = {
   enable: true,
@@ -16,6 +17,7 @@ exports.mongoose = {
 exports.cors = {
   enable: true,
   package: 'egg-cors',
+  credentials: true,
 };
 //实现 RESTful API
 exports.validate = {

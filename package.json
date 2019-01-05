@@ -10,7 +10,8 @@
     "egg-scripts": "^2.5.0",
     "egg-validate": "^2.0.2",
     "egg-view-arttemplate": "^2.0.2",
-    "moment": "^2.23.0"
+    "moment": "^2.23.0",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "autod": "^3.0.1",
