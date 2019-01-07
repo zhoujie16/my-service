@@ -2,6 +2,8 @@
 
 module.exports = appInfo => {
   const config = exports = {};
+  // const mongoDBBaseUrl = 'mongodb://zhoujie16.cn:27017'
+  const mongoDBBaseUrl = 'localhost:27017'
 
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1546483170019_238';
@@ -24,7 +26,7 @@ module.exports = appInfo => {
   config.mongoose = {
     clients: {
       zhoujie_service: {
-        url: 'mongodb://zhoujie16.cn:27017/zhoujie_service',
+        url: `mongodb://${mongoDBBaseUrl}/zhoujie_service`,
         options: {
           auth: {"authSource": "admin"},
           user: "zhoujie",
@@ -33,7 +35,7 @@ module.exports = appInfo => {
         },
       },
       note_service: {
-        url: 'mongodb://zhoujie16.cn:27017/note_service',
+        url:`mongodb://${mongoDBBaseUrl}/note_service`,
         options: {
           auth: {"authSource": "admin"},
           user: "zhoujie",
