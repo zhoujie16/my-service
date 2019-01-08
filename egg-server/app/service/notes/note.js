@@ -29,11 +29,11 @@ class NoteService extends Service {
   }
 
   //查询笔记
-  async queryNote() {
+  async queryNote({_id}) {
     const {ctx} = this;
-    return ctx.model.Notes.Note.find({
-      userName: '周杰',
-    }).then(res => {
+    return ctx.model.Notes.Note.find(ctx.helper.cleanDictUndefind({
+      _id
+    })).then(res => {
       return {
         success: true,
         code: 0,
@@ -42,6 +42,14 @@ class NoteService extends Service {
     }).catch(err => {
       return {success: false, err: err}
     })
+  }
+
+  //编辑
+  async editNote({id}){
+    const {ctx} = this;
+    //查询笔记 根据id
+
+
   }
 }
 

@@ -28,32 +28,13 @@
       loginHandleClick(){
         console.log('登录')
         const {userCode,password} = this
-        uni.request({
-        	url: 'http://localhost:7001/login',
-        	method: 'POST',
-        	data: {
-            userCode,
-            password
-          },
-        	success: res => {
-            console.log(res.data)
-            //保存token
-            uni.setStorageSync('token', res.data.data.token);
-            if(res.data.success){
-              //登陆成功
-              uni.navigateTo({
-              	url: './../home/home',
-              	success: res => {},
-              	fail: () => {},
-              	complete: () => {}
-              });
-            }
-          },
-        	fail: (err) => {
-            console.log(err)
-          },
-        	complete: () => {}
-        });
+        this.$http.post('/login',{userCode,password}).then(res=>{
+          //保存token
+          uni.setStorageSync('token', res.data.token);
+          uni.navigateTo({
+          	url: './../home/home',
+          });
+        })
       },
       registHandleClick(){
         uni.navigateTo({

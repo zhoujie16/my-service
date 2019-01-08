@@ -1,6 +1,9 @@
 <template>
   <view>
-    {{notes}}
+    <button type="primary" @tap="addNoteHandleClick">添加</button>
+    <view class="" v-for="(item,i) in notes" :key="item._id" @tap="noteCellHandleClick(item)" style="padding: 20upx;">
+    	{{item.note}}
+    </view>
   </view>
 </template>
 
@@ -16,18 +19,26 @@
     },
     methods: {
       queryNotes() {
-        uni.request({
-          url: 'http://localhost:7001/api/notes/queryNote',
-          method: 'POST',
-          data: {
-            token: uni.getStorageSync('token')
-          },
-          success: res => {
-            console.log('查询笔记', res.data)
-            this.notes = res.data
-          },
-          fail: () => {},
-          complete: () => {}
+        this.$http.post('/api/notes/queryNote').then(res => {
+          console.log('查询笔记', res.data)
+          this.notes = res.data
+        })
+      },
+      addNoteHandleClick(){
+        uni.navigateTo({
+        	url: './../note-edit/note-edit',
+        	success: res => {},
+        	fail: () => {},
+        	complete: () => {}
+        });
+      },
+      //进入编辑
+      noteCellHandleClick(item){
+        uni.navigateTo({
+        	url: `./../note-edit/note-edit?_id=${item._id}`,
+        	success: res => {},
+        	fail: () => {},
+        	complete: () => {}
         });
       }
     }

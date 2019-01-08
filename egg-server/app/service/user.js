@@ -2,6 +2,7 @@
 const Service = require('egg').Service;
 
 class UserService extends Service {
+  //查询用户是否存在
   async queryUser({userCode}) {
     const ctx = this.ctx;
     return ctx.model.User.find({userCode})

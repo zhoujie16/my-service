@@ -26,22 +26,12 @@
           userCode,
           password
         } = this
-        uni.request({
-          url: 'http://localhost:7001/api/user/addUser',
-          method: 'POST',
-          data: {
-            userCode,
-            password
-          },
-          success: res => {
-            console.log(res.data)
-            if (res.data.success) {
-              console.log(res.data)
-            }
-          },
-          fail: () => {},
-          complete: () => {}
-        });
+        this.$http.post('/api/user/addUser', {
+          userCode,
+          password
+        }).then(data => {
+          console.log(data)
+        })
       }
     }
   }

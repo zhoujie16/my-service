@@ -5,12 +5,13 @@ const Controller = require('egg').Controller;
 class NoteController extends Controller {
   async add() {
     const {ctx} = this;
-    const {note,ceateTimestamp} = ctx.query
+    const {note,ceateTimestamp} = ctx.request.body
     ctx.body = await ctx.service.notes.note.addNote({note,ceateTimestamp})
   }
   async query(){
     const {ctx} = this;
-    ctx.body = await ctx.service.notes.note.queryNote()
+    const {_id} = ctx.request.body
+    ctx.body = await ctx.service.notes.note.queryNote({_id})
   }
 }
 
