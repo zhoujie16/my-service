@@ -13,6 +13,11 @@ class NoteController extends Controller {
     const {_id} = ctx.request.body
     ctx.body = await ctx.service.notes.note.queryNote({_id})
   }
+    async edit(){
+        const {ctx} = this;
+        const {_id,note} = ctx.request.body
+        ctx.body = await ctx.service.notes.note.editNote({_id,note})
+    }
 }
 
 module.exports = NoteController;

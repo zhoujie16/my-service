@@ -38,7 +38,7 @@ module.exports = class TokenService extends Service {
     const token_old = await this.service.token.queryUserToken({userCode})
     if (token_old) {
       //更新 token
-      return ctx.model.Token.update({
+      return ctx.model.Token.updateOne({
         userCode
       }, {
         // userCode,

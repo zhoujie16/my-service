@@ -21,4 +21,6 @@ module.exports = app => {
   //笔记
   router.post('/api/notes/addNote', controller.api.notes.note.add);
   router.post('/api/notes/queryNote', controller.api.notes.note.query);
+  router.post('/api/notes/editNote', controller.api.notes.note.edit);
+
 };

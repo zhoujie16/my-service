@@ -45,9 +45,22 @@ class NoteService extends Service {
   }
 
   //编辑
-  async editNote({id}){
+  async editNote({_id,note}){
     const {ctx} = this;
-    //查询笔记 根据id
+      return ctx.model.Notes.Note.updateOne({
+          _id
+      },{
+          note
+      }).then(res => {
+        console.log({_id,note})
+          return {
+              success: true,
+              code: 0,
+              data:res,
+          }
+      }).catch(err => {
+          return {success: false, err: err}
+      })
 
 
   }
