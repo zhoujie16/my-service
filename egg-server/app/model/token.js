@@ -5,6 +5,7 @@ module.exports = app => {
   const conn = app.mongooseDB.get('zhoujie_service');
 
   const TokenSchema = new Schema({
+    userId: {type: String},
     userCode: {type: String},
     token: {type: String},
   });

@@ -6,7 +6,9 @@ module.exports = app => {
   const conn = app.mongooseDB.get('note_service');
 
   const ClassifySchema = new Schema({
-    classifyName: {type: String},
+    userId: {type: String},
+    userCode: {type: String},
+    classify: {type: Array, default: ['默认分组']},
   });
 
   return conn.model('Classify', ClassifySchema);

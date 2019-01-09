@@ -8,8 +8,7 @@ module.exports = app => {
   const UserSchema = new Schema({
     userCode: {type: String},
     userName: {type: String},
-    password: {type: String},
-    noteClassifys: {type: Array}
+    password: {type: String}
   });
 
   return conn.model('User', UserSchema);

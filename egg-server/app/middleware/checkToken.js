@@ -20,23 +20,11 @@ module.exports = (options, app) => {
       if (token_service) {
         await next()
       } else {
-        ctx.body = {
-          //不存在
-          success: false,
-          message: '请重新登录',
-          token: String(token_user)
-        }
+        return ctx.error('请重新登录')
       }
 
     } else {
-      ctx.body = {
-        //不存在
-        success: false,
-        message: '请重新登录',
-        token: String(token_user)
-      }
+      return ctx.error('请重新登录')
     }
-
-    // await next()
   }
 }

@@ -7,6 +7,7 @@ module.exports = app => {
   const NoteSchema = new Schema({
     userName: {type: String},
     note: {type: String},
+    classifyName: {type: String, default: '默认分组'},
     ceateTimestamp: {type: Number},
     updateTimestamp: {type: Number},
     ceateTime: {type: String},

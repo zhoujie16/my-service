@@ -4,9 +4,8 @@ const Controller = require('egg').Controller;
 
 class HomeController extends Controller {
   async index() {
-    await this.ctx.render('home.html', {
-      data: 'hi egg',
-    });
+    const {ctx} = this
+    return await this.service.home.test()
   }
 }
 

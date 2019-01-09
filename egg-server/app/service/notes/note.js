@@ -37,7 +37,7 @@ class NoteService extends Service {
       return {
         success: true,
         code: 0,
-        data:res,
+        data: res,
       }
     }).catch(err => {
       return {success: false, err: err}
@@ -45,24 +45,21 @@ class NoteService extends Service {
   }
 
   //编辑
-  async editNote({_id,note}){
+  async editNote({_id, note}) {
     const {ctx} = this;
-      return ctx.model.Notes.Note.updateOne({
-          _id
-      },{
-          note
-      }).then(res => {
-        console.log({_id,note})
-          return {
-              success: true,
-              code: 0,
-              data:res,
-          }
-      }).catch(err => {
-          return {success: false, err: err}
-      })
-
-
+    return ctx.model.Notes.Note.updateOne({
+      _id
+    }, {
+      note
+    }).then(res => {
+      return {
+        success: true,
+        code: 0,
+        data: res,
+      }
+    }).catch(err => {
+      return {success: false, err: err}
+    })
   }
 }
 

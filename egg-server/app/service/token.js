@@ -16,7 +16,8 @@ module.exports = class TokenService extends Service {
       console.log(err)
     })
   }
-  async queryUserTokenByToken({token}){
+
+  async queryUserTokenByToken({token}) {
     const {ctx} = this
     return ctx.model.Token.find({
       token
@@ -32,31 +33,27 @@ module.exports = class TokenService extends Service {
   }
 
   //保存 或者 替换用户token
-  async saveUserToken({userCode, token}) {
+  async saveUserToken({userId, userCode, token}) {
     const {ctx} = this
     //先查询 token是否存在
-    const token_old = await this.service.token.queryUserToken({userCode})
-    if (token_old) {
+    const tokenArr = await ctx.model.Token.find({userId})
+    if (tokenArr.length>0) {
       //更新 token
       return ctx.model.Token.updateOne({
-        userCode
+        userId
       }, {
-        // userCode,
         token
-      }).then(res => {
+      }).then(res=>{
         return true
-      }).catch(err => {
-        return false
       })
-    } else {
-      //添加token
+    }else {
+      //添加
       return ctx.model.Token.create({
+        userId,
         userCode,
         token
-      }).then(res => {
+      }).then(res=>{
         return true
-      }).catch(err => {
-        return false
       })
     }
   }

@@ -2,8 +2,8 @@
 
 module.exports = appInfo => {
   const config = exports = {};
-  const mongoDBBaseUrl = 'zhoujie16.cn:27017'
-  // const mongoDBBaseUrl = 'localhost:27017'
+  // const mongoDBBaseUrl = 'zhoujie16.cn:27017'
+  const mongoDBBaseUrl = 'localhost:27017'
 
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1546483170019_238';

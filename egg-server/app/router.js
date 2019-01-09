@@ -6,6 +6,8 @@
 module.exports = app => {
   const {router, controller} = app;
   router.get('/', controller.home.index);
+  //发送邮件
+  router.get('/api/sendEmail', controller.api.sendEmail.sendEmail);
   //获取北京时间
   router.get('/api/getbjtime', controller.api.time.getBJtime);
   //登录
@@ -15,7 +17,6 @@ module.exports = app => {
   router.post('/api/user/addUser', controller.api.user.add);
   /* notes */
   //分类
-  router.get('/api/notes/addClassify', controller.api.notes.classify.add);
   router.post('/api/notes/addClassify', controller.api.notes.classify.add);
   router.post('/api/notes/queryClassify', controller.api.notes.classify.query);
   //笔记
