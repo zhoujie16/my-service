@@ -1,4 +1,4 @@
-// app/service/user.js
+// 发送邮件的服务
 const Service = require('egg').Service;
 
 class UserService extends Service {
@@ -14,12 +14,15 @@ class UserService extends Service {
   }
 
   // 添加用户
-  async addUser({userCode, userName, password}) {
+  async addUser({userCode, userName, email,password}) {
     const ctx = this.ctx
     if (ctx.helper.checkFieldEmpty(userCode) || ctx.helper.checkFieldEmpty(password)) {
       return '账号密码不能为空'
     }
 
+    // if (ctx.helper.checkFieldEmpty(email)){
+    //   return '邮箱不能为空'
+    // }
     /*if (userCode.length < 8) {
       return '账号长度至少8位'
     }

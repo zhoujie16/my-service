@@ -6,7 +6,7 @@ class UserController extends Controller {
   async add() {
     const {ctx} = this;
     const {userCode, userName, password} = ctx.request.body
-    const res = await ctx.service.user.addUser({userCode, userName, password})
+    const res = await ctx.service.user.addUser({userCode, userName,email, password})
     if (res === true) {
       ctx.success()
     } else {

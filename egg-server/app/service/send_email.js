@@ -1,34 +1,39 @@
 const Service = require('egg').Service;
 const nodemailer = require('nodemailer');
 
+let transporter = nodemailer.createTransport({
+  service: 'qq', // no need to set host or port etc.
+  auth: {
+    user: '1406187962@qq.com',
+    // 这里密码不是qq密码，是你设置的smtp授权码
+    pass: 'nsiwmysgzpqcfejb',
+  }
+});
 
 class SendEmailService extends Service {
-
-  async sendEmail() {
+  async sendEmail({email,subject,html}) {
     const {ctx} = this
-    var transporter = nodemailer.createTransport({
-      service: '163',
-      auth: {
-        user: 'zhoujie16m@163.com',
-        pass: '1472580369'
-      }
-    });
-    var mailOptions = {
-      from: 'zhoujie16m ', // sender address
-      to: 'zhoujie16m@163.com', // list of receivers
-      subject: 'Hello ✔', // Subject line
-      text: 'Hello world ✔', // plaintext body
-      html: '<b>Hello world ✔</b>' // html body
+
+    let mailOptions = {
+      from: '"zhoujie_service " <1406187962@qq.com>', // sender address
+      to: email, // list of receivers
+      subject, // Subject line
+      // text: 'text', // plain text body
+      html // html body
     };
-    transporter.sendMail(mailOptions, function (error, info) {
-      if (error) {
-        console.log(error)
-        return error
-      } else {
-        console.log('Message sent: ' + info.response);
-        return true
-      }
-    });
+
+    return new Promise((resolve, reject) => {
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          console.log(error);
+          reject(error)
+        }
+        console.log('Message sent: %s', info.messageId);
+        resolve(true)
+        // Message sent: <04ec7731-cc68-1ef6-303c-61b0f796b78f@qq.com>
+      });
+    })
+
   }
 }
 

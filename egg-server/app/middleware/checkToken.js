@@ -3,7 +3,8 @@ module.exports = (options, app) => {
     const routerArr_unCheck = [
       '/login',
       '/api/getbjtime',
-      '/api/user/addUser'
+      '/api/user/addUser',
+      '/api/speechRecognitionSuccessCallback'
     ]
     const tmp = routerArr_unCheck.some((path) => {
       return ctx.request.url.indexOf(path) !== -1

@@ -8,6 +8,9 @@ module.exports = app => {
   router.get('/', controller.home.index);
   //发送邮件
   router.get('/api/sendEmail', controller.api.sendEmail.sendEmail);
+  router.get('/api/speechRecognition', controller.api.speechRecognition.test);
+  router.get('/api/speechRecognitionSuccessCallback', controller.api.speechRecognition.callback);
+  router.post('/api/speechRecognitionSuccessCallback', controller.api.speechRecognition.callback);
   //获取北京时间
   router.get('/api/getbjtime', controller.api.time.getBJtime);
   //登录
